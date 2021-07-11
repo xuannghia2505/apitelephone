@@ -1,6 +1,8 @@
 const Phone = require('../models/phone');
+const User = require('../models/user');
 
 module.exports = {
+    
     addDanhba: function(phone) {
         return new Promise(function(res, rej){
             const newPhone = new Phone(phone);

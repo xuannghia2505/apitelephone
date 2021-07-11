@@ -1,6 +1,10 @@
 const express=require('express');
 const phoneRoutes = require('./routes/phoneRoutes');
+const userRoutes = require('./routes/userRoutes');
+const path = require('path');
+// const bodyParser = require('body-parser');
 const app = express();
+const userModel = require('./models/user');
 require('dotenv').config();
 
 const port=process.env.APP_PORT || 5000;
@@ -15,7 +19,7 @@ db.once('open', function() {
 
 
 app.use('/api/',phoneRoutes);
-
+app.use('/api/',userRoutes);
 
 app.listen(port, () => {
         console.log(`Server running on port ${host}:${port}`)

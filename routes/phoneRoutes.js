@@ -1,8 +1,10 @@
 const express= require('express');
-
-const phoneControllers= require('../controllers/phoneControllers');
+const phoneControllers = require('../controllers/phoneControllers'); 
 const valiDatePhone = require('../middlewares/phoneFormValidate');
+const authMiddleware = require('../middlewares/authJWT');
 const app = express();
+
+
 
 //add danhba
 app.post('/phone', valiDatePhone, phoneControllers.adddanhba);
@@ -11,9 +13,9 @@ app.post('/phone', valiDatePhone, phoneControllers.adddanhba);
 app.get('/list',phoneControllers.getdanhba);
 
 //update danhba
-app.patch('/phone/:id',valiDatePhone,phoneControllers.updatedanhba);
+app.patch('/phone/:id',authMiddleware,valiDatePhone,phoneControllers.updatedanhba);
 
 //delete danhba
-app.delete('/phone/:id',phoneControllers.deletedanhba);
+app.delete('/phone/:id',authMiddleware,phoneControllers.deletedanhba);
 
 module.exports= app;

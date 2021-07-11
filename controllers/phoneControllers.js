@@ -1,6 +1,7 @@
 require('dotenv').config();
 const jwt = require('jsonwebtoken');
-const phoneServices = require('../services/phoneServices')
+const phoneServices = require('../services/phoneServices');
+const key = process.env.APP_PRIVATE_KEY;
 
 module.exports={
     getdanhba: function(req, res, next) {
