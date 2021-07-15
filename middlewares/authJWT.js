@@ -5,6 +5,7 @@ const key = process.env.APP_PRIVATE_KEY;
 
 module.exports = function (req, res, next) {
     const token = req.header('Token');
+    console.log(token)
     if (!token) 
         return res.status(401).json({ message: "Auth Error" });
     try {
